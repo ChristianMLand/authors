@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     axios.get('/api/authors')
-      .then(res => setAuthors(res.data.allAuthors))
+      .then(res => setAuthors(res.data))
   }, []);
 
   const handleDelete = id => {

@@ -11,9 +11,7 @@ export default function Edit() {
     useEffect(() => {
         if (router.isReady) {
             axios.get(`/api/authors/${router.query.id}`)
-                .then(res => {
-                    setAuthor(res.data);
-                })
+                .then(res => setAuthor(res.data))
                 .catch(console.error);
         }
     },[router.isReady]);
@@ -24,7 +22,6 @@ export default function Edit() {
         <Layout>
             <p>Edit this author:</p>
             <AuthorForm 
-                type="Edit"
                 values={ author }
                 submitAction={ author => axios.put(`/api/authors/${router.query.id}`, author) }
             />

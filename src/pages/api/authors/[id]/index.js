@@ -14,7 +14,7 @@ export default async function handler(req, res) {
                 .catch(error => res.status(400).json(error));
         case "DELETE":
             return Author.deleteOne({ _id : req.query.id })
-                .then(result => res.json({ result }))
+                .then(result => res.json(result))
                 .catch(error => res.status(400).json(error));
         default:
             return res.status(404).json({ message : "404 not found"});

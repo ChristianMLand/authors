@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     switch (req.method) {
         case "GET":
             return Author.find()
-                .then(allAuthors => res.json({ allAuthors }))
+                .then(allAuthors => res.json(allAuthors))
                 .catch(error => res.status(400).json(error));
         case "POST":
             return Author.create(req.body)
