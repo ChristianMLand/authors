@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from '@/styles/base.module.css';
 
 export default function AuthorForm({ values, submitAction }) {
     const router = useRouter();
@@ -19,12 +20,13 @@ export default function AuthorForm({ values, submitAction }) {
     }
 
     return (
-        <form onSubmit={ handleSubmit }>
-            <label htmlFor="name">Name: </label>
-            <input name="name" type="text" id="name" value={formData.name} onChange={ handleChange } />
-            { formErrors && <p>{formErrors["name"].message}</p> }
-            <Link href="/">Cancel</Link>
-            <button>Submit</button>
+        <form onSubmit={ handleSubmit } className={styles.form}>
+            <input name="name" type="text" placeholder="Name" value={formData.name} onChange={ handleChange } />
+            { formErrors && <p className={styles.error}>{formErrors.name.message}</p> }
+            <div>
+                <Link href="/" className={styles.button}>Cancel</Link>
+                <button className={styles.button}>Submit</button>
+            </div>
         </form>
     )
 }

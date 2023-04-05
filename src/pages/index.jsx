@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Layout from '@/components/layout';
+import styles from '@/styles/base.module.css';
 
 export default function Home() {
   const [authors, setAuthors] = useState([]);
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <Layout home>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Author</th>
@@ -30,8 +31,8 @@ export default function Home() {
             <tr key={ i }>
               <td>{author.name}</td>
               <td>
-                <Link href={`/edit/${author._id}`}>Edit</Link>
-                <button onClick={ () => handleDelete(author._id) }>Delete</button>
+                <Link className={styles.button} href={`/edit/${author._id}`}>Edit</Link>
+                <button className={styles.button} onClick={ () => handleDelete(author._id) }>Delete</button>
               </td>
             </tr>
           ))}
